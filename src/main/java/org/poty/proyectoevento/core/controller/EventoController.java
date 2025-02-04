@@ -66,4 +66,6 @@ public class EventoController {
             return ResponseEntity.badRequest().body("Error al obtener el listado de los eventos. Póngase en contacto con el servicio técnico.");
         }
     }
+
+
 }
