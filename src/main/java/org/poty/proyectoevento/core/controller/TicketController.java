@@ -22,6 +22,8 @@ public class TicketController {
             ticketService.venderTicket(id_evento);
             return ResponseEntity.ok("Ticket Vendido");
         }catch (Exception e) {
+            if (e.getMessage().contains("comprobar_tickets"))
+                return ResponseEntity.badRequest().body("No se pueden comprar más boletos para este evento");
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }

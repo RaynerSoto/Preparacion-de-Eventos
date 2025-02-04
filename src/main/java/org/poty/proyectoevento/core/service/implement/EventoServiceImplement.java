@@ -31,6 +31,7 @@ public class EventoServiceImplement implements EventoService {
         if (eventoRepository.existsById(evento.getId())){
             if (eventoRepository.findById(evento.getId()).get().getBoletos_vendidos()<= evento.getCantidad_boletos()){
                 ValidacionEvento.validarEvento(evento);
+                evento.setBoletos_vendidos(eventoRepository.findById(evento.getId()).get().getBoletos_vendidos());
                 eventoRepository.save(evento);
             }else {
                 throw new Exception("El evento no se puede modificar porque ya cantidad de boletos vendidos es mayor que la nueva cantidad de boletos");
