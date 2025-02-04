@@ -32,6 +32,8 @@ public class TicketServiceImplement implements TicketService {
         if (eventoRepository.existsById(id_evento)) {
             Evento evento = eventoRepository.findById(id_evento).get();
             ticketsRepository.save(new Ticket(evento));
+        }else {
+            throw new Exception("El evento no existe");
         }
     }
 
