@@ -9,4 +9,6 @@ public interface EventoRepository extends JpaRepository<Evento,Long> {
     Optional<Evento> findById(long id);
 
     boolean existsById(long id);
+
+    Long id(long id);
 }

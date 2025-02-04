@@ -10,7 +10,7 @@ import org.poty.proyectoevento.core.utils.Validacion;
 import org.poty.proyectoevento.core.utils.ValidacionFecha;
 
 import java.time.LocalDateTime;
-import java.util.Date;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -54,6 +54,9 @@ public class Evento {
 
     @Column(name = "estado",nullable = false)
     private boolean estado;
+
+    @OneToMany(mappedBy = "evento",cascade = CascadeType.ALL)
+    List<Ticket> tickets;
 
     public Evento(EventoDtoInsert eventoDtoInsert){
         this.nombre = eventoDtoInsert.nombre();
