@@ -76,17 +76,5 @@ public class Evento {
         this.cantidad_boletos = eventoDtoInsert.cantidad_boletos();
         this.estado = true;
     }
-
-    @PrePersist
-    @PreUpdate
-    protected void onCreateorUpdate() {
-        Validacion.validarElemento(this);
-        if (!ValidacionFecha.validarFechaPosteriorHoy(this.fecha_inicio)) {
-            throw new IllegalArgumentException("Las fechas de inicio debe ser posterior al día de hoy");
-        }
-        if (ValidacionFecha.validarFechaRango(this.fecha_inicio, this.fecha_fin)) {
-            throw new IllegalArgumentException("La fecha de fin debe ser posterior a la fecha de inicio");
-        }
-    }
 }
 

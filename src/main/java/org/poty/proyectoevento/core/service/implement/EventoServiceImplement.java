@@ -4,6 +4,7 @@ import org.poty.proyectoevento.core.model.Evento;
 import org.poty.proyectoevento.core.repository.EventoRepository;
 import org.poty.proyectoevento.core.service.EventoService;
 import org.poty.proyectoevento.core.utils.Validacion;
+import org.poty.proyectoevento.core.utils.ValidacionEvento;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,7 +22,7 @@ public class EventoServiceImplement implements EventoService {
 
     @Override
     public void insertarEvento(Evento evento) throws Exception {
-        Validacion.validarElemento(evento);
+        ValidacionEvento.validarEvento(evento);
         eventoRepository.save(evento);
     }
 
@@ -29,7 +30,7 @@ public class EventoServiceImplement implements EventoService {
     public void modificarEvento(Evento evento) throws Exception {
         if (eventoRepository.existsById(evento.getId())){
             if (eventoRepository.findById(evento.getId()).get().getBoletos_vendidos()<= evento.getCantidad_boletos()){
-                Validacion.validarElemento(evento);
+                ValidacionEvento.validarEvento(evento);
                 eventoRepository.save(evento);
             }else {
                 throw new Exception("El evento no se puede modificar porque ya cantidad de boletos vendidos es mayor que la nueva cantidad de boletos");

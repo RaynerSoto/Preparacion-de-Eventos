@@ -17,7 +17,7 @@ public class TicketController {
     }
 
     @PostMapping("/{id}")
-    public ResponseEntity<String> venderTicket(@PathVariable Long id_evento) {
+    public ResponseEntity<String> venderTicket(@PathVariable(value = "id") Long id_evento) {
         try {
             ticketService.venderTicket(id_evento);
             return ResponseEntity.ok("Ticket Vendido");

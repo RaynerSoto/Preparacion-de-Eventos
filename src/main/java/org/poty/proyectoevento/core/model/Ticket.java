@@ -16,6 +16,7 @@ public class Ticket {
     @Id
     @GeneratedValue(generator = "ticketsId")
     @SequenceGenerator(name = "ticketsId",sequenceName = "tickets_id_tickets_seq", allocationSize = 1)
+    @Column(name = "id_tickets",nullable = false)
     private Long id;
 
     @Column(name = "codigo")
@@ -25,7 +26,7 @@ public class Ticket {
     @Temporal(TemporalType.TIMESTAMP)
     private LocalDateTime fecha_canjeo;
 
-    @Column(name = "isCanjeo",nullable = false)
+    @Column(name = "is_canjeo",nullable = false)
     private boolean isCanjeo;
 
     @ManyToOne
@@ -36,6 +37,6 @@ public class Ticket {
         this.evento = evento;
         this.isCanjeo = false;
         this.fecha_canjeo = null;
-        this.codigo = evento.getNombre()+evento.getBoletos_vendidos()+1+LocalDateTime.now().getDayOfYear();
+        this.codigo = evento.getNombre()+(evento.getBoletos_vendidos()+1);
     }
 }
