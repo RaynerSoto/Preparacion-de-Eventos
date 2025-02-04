@@ -1,9 +1,38 @@
 spring:
   application:
-    name: Proyecto Evento
+    name: Proyecto Evento # Nombre del proyecto en cuestión
   banner:
-    location: banner/banner.txt
     charset: UTF-8
+  datasource:
+    url: jdbc:postgresql://localhost:5432/Evento #URL de la base de datos
+    username: ${DB_USER} #El nombre de usuario de la base de datos debe ponerla aquí
+    password: ${DB_PASSWORD} #La contraseña de la base de datos debe ponerla aquí
+    driver-class-name: org.postgresql.Driver #Driver de conexión a la base de datos, en este caso PostgreSQL
+    hikari:
+      connection-timeout: 60000
+    jpa:
+      format-sql: true
+      hibernate:
+        ddl-auto: update
+      properties:
+        hibernate:
+          format_sql: true
+        javax:
+          persistence:
+            query:
+              timeout: 60000
+      database: postgresql
+      show-sql: true
+  flyway:
+    baseline-on-migrate: true
+    enabled: true
+    locations: classpath:db/migration
 
 server:
-  port: 8080
+  port: 8080 #Puerto donde se aloja el sistema, si este puerto se encuentra ocupado,debe ser cambiado
+
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /
