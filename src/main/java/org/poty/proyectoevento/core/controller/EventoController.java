@@ -1,5 +1,7 @@
 package org.poty.proyectoevento.core.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.poty.proyectoevento.core.dto.evento.EventoDtoInsert;
 import org.poty.proyectoevento.core.dto.evento.EventoDtoObtener;
 import org.poty.proyectoevento.core.model.Evento;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1/evento")
+@Tag(name = "Controllador de eventos", description = "Controlla todos los aspectos de los eventos")
 public class EventoController {
     private final EventoService eventoService;
     private final EventoRepository eventoRepository;
@@ -22,6 +25,7 @@ public class EventoController {
     }
 
     @PostMapping("/")
+    @Operation(summary = "Insertar Evento", description = "Este endpoint permite insertar un evento")
     public ResponseEntity<String> insertarEvento(@RequestBody EventoDtoInsert eventoDtoInsert){
         try {
             eventoService.insertarEvento(new Evento(eventoDtoInsert));
@@ -32,6 +36,7 @@ public class EventoController {
     }
 
     @PutMapping("/{id}")
+    @Operation(summary = "Modificar Evento",description = "Este endpoint permite modificar un evento")
     public ResponseEntity<String> modificarEvento(@RequestBody EventoDtoInsert eventoDtoInsert, @PathVariable Long id){
         try {
             eventoService.modificarEvento(new Evento(id,eventoDtoInsert));
@@ -42,6 +47,7 @@ public class EventoController {
     }
 
     @DeleteMapping("/{id}")
+    @Operation(summary = "Eliminar Evento",description = "Este endpoint permite eliminar un evento a raíz de su ID")
     public ResponseEntity<String>eliminarEvento(@PathVariable Long id){
         try {
             eventoService.eliminarEvento(id);
@@ -52,6 +58,7 @@ public class EventoController {
     }
 
     @GetMapping("/")
+    @Operation(summary = "Listar Eventos",description = "Este endpoint permite listar un evento de manera simple")
     public ResponseEntity<?> listarEventos(){
         try {
             return ResponseEntity.ok(eventoRepository.findAll().stream().map(EventoDtoObtener::convertirEventoAEventoDtoObtener).toList());
