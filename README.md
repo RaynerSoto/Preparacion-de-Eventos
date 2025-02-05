@@ -68,4 +68,8 @@ he decidido no desarrollar
 ## Ejecución del sistema
 Pasos para la ejecucuión del sistema:
 1. Verificar que el puerto 8080 se encuentre despejado para la ejecución del proyecto
-2. Asignar el nombre de usuario y la password de la base de datos o en otro
+2. Asignar el nombre de usuario y la password de la base de datos o definir las variables de entorno con los nombre definidos en la application.yml
+3. Crear una base de datos en PostgreSQL con el nombre: Evento
+4. Compilar el proyecto y acceder a la dirección: http://localhost:8080/. Recuerde que el 8080 es si mantiene el mismo puerto
+5. Esto le permite acceder a [Open API 3.0 o Swagger](diagramas/Open%20Api%203.0.png) como es mayormente conocido para que así puede y ver probar todos los endpoints del sistema
+6. La base de datos ya que trabaja con Flyway se carga sola, pero la entregaré vacía para que pueda trabajar con ella
