@@ -4,6 +4,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.poty.proyectoevento.core.dto.evento.EventoDtoInsert;
 import org.poty.proyectoevento.core.dto.evento.EventoDtoObtener;
+import org.poty.proyectoevento.core.dto.evento.EventoDtoObtenerComplejo;
 import org.poty.proyectoevento.core.model.Evento;
 import org.poty.proyectoevento.core.repository.EventoRepository;
 import org.poty.proyectoevento.core.service.EventoService;
@@ -62,6 +63,16 @@ public class EventoController {
     public ResponseEntity<?> listarEventos(){
         try {
             return ResponseEntity.ok(eventoRepository.findAll().stream().map(EventoDtoObtener::convertirEventoAEventoDtoObtener).toList());
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body("Error al obtener el listado de los eventos. Póngase en contacto con el servicio técnico.");
+        }
+    }
+
+    @GetMapping("/completa")
+    @Operation(summary = "Listar Eventos",description = "Este endpoint permite listar un evento de manera más compleja")
+    public ResponseEntity<?> listarEventosCompleto(){
+        try {
+            return ResponseEntity.ok(eventoRepository.findAll().stream().map(EventoDtoObtenerComplejo::convertirEventoAEventoDtoObtener).toList());
         } catch (Exception e) {
             return ResponseEntity.badRequest().body("Error al obtener el listado de los eventos. Póngase en contacto con el servicio técnico.");
         }
