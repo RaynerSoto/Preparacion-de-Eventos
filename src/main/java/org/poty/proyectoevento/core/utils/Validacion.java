@@ -13,12 +13,24 @@ public class Validacion{
 
     private Validacion(){}
 
+    /**
+     * @apiNote {@summary = Función para listar las valiciones de los elemntos no cumplidas}
+     * @exception UnsupportedOperationException
+     * @param elemento
+     * return Set
+     */
     public static <T> Set<String> listarValidacionesNoCumplidastoSet(T elemento){
         return validator.validate(elemento).
                 stream().map(con -> con.getMessage())
                 .collect(Collectors.toSet());
     }
 
+    /**
+     * @apiNote {@summary = Función para listar las valiciones de los elemntos no cumplidas}
+     * @exception UnsupportedOperationException
+     * @param elemento
+     * return List
+     */
     public static <T> List<String> listarValidacionesNoCumplidastoList(T elemento){
         return validator.validate(elemento).
                 stream().map(con -> con.getMessage())

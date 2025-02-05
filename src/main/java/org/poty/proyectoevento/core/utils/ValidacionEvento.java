@@ -4,6 +4,12 @@ import org.poty.proyectoevento.core.model.Evento;
 
 public class ValidacionEvento {
 
+    /**
+     * @apiNote {@summary = Función para validar un evento}
+     * @exception   UnsupportedOperationException
+     * @throws  IllegalArgumentException
+     * @param evento
+     */
     public static void validarEvento(Evento evento){
         Validacion.validarElemento(evento);
         if (!ValidacionFecha.validarFechaPosteriorHoy(evento.getFecha_inicio())) {
