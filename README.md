@@ -73,3 +73,5 @@ Pasos para la ejecucuión del sistema:
 4. Compilar el proyecto y acceder a la dirección: http://localhost:8080/. Recuerde que el 8080 es si mantiene el mismo puerto
 5. Esto le permite acceder a [Open API 3.0 o Swagger](diagramas/Open%20Api%203.0.png) como es mayormente conocido para que así puede y ver probar todos los endpoints del sistema
 6. La base de datos ya que trabaja con Flyway se carga sola, pero la entregaré vacía para que pueda trabajar con ella
+
+En la zona de Test podemos enconrar la realización de pruebas simples para comprobar que todo el sistema estuviera trabajando correctamente
