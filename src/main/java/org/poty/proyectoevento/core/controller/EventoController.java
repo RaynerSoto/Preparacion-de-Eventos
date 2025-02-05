@@ -12,7 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/v1/evento")
+@RequestMapping("/poty.org/evento")
 @Tag(name = "Controllador de eventos", description = "Controlla todos los aspectos de los eventos")
 public class EventoController {
     private final EventoService eventoService;
@@ -66,6 +66,4 @@ public class EventoController {
             return ResponseEntity.badRequest().body("Error al obtener el listado de los eventos. Póngase en contacto con el servicio técnico.");
         }
     }
-
-
 }

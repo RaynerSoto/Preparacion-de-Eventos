@@ -39,8 +39,8 @@ public class TicketServiceImplement implements TicketService {
 
     @Override
     public void canjearTicket(Long id_ticket) throws Exception {
-        if (eventoRepository.existsById(id_ticket)) {
-            Ticket ticket = ticketsRepository.findById(id_ticket);
+        if (ticketsRepository.existsById(id_ticket)) {
+            Ticket ticket = ticketsRepository.findById(id_ticket).get();
             if (ValidacionFecha.validarFechaEnRango(ticket.getEvento().getFecha_inicio(), ticket.getEvento().getFecha_fin(), LocalDateTime.now())) {
                 ticket.setCanjeo(true);
                 ticket.setFecha_canjeo(LocalDateTime.now());

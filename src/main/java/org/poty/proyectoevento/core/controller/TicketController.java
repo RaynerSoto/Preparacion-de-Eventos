@@ -8,7 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/v1/ticket")
+@RequestMapping("/poty.org/ticket")
 @Tag(name = "Controllador de los tickets", description = "Controlla todos los acceso a los tickets")
 public class TicketController {
 
@@ -34,7 +34,7 @@ public class TicketController {
 
     @PutMapping("/{id}")
     @Operation(summary = "Canjear Ticket",description = "A tráves del id del ticket, se puede canjear este mismo")
-    public ResponseEntity<String> canjearTicket(@PathVariable Long id_ticket) {
+    public ResponseEntity<String> canjearTicket(@PathVariable(value = "id") Long id_ticket) {
         try {
             ticketService.canjearTicket(id_ticket);
             return ResponseEntity.ok("Ticket canjado");
